@@ -71,3 +71,9 @@ h1{
     margin-top: 32px;
     font-style: italic;
 }
+footer {
+    background-color: #f1d324;
+    height: 120px;
+    padding: 10px 0; 
+    margin-top: auto;
+}
