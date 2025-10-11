@@ -133,3 +133,37 @@ main{
 .form-contato button:hover {
   background-color: #558b2f;
 }
+
+#programas{
+    text-align: center;
+    font-size: 20px;
+    color: #000000;
+    margin-top: 32px;
+    font-style: italic;
+}
+#dentistaDoBem{
+    display: block;
+    margin: 0px auto;
+    width: 300px;
+    border-radius: 0%;
+}
+#apoloniasDoBem{
+    display: block;
+    margin: 0px auto;
+    width: 300px;
+    border-radius: 0%;
+}
+#legendas1_0 { 
+    text-align: center;
+    font-size: 20px;
+    color: #000000;
+    margin-top: 32px;
+    font-style: italic;
+}
+#legendas1_1{
+    text-align: center;
+    font-size: 20px;
+    color: #000000;
+    margin-top: 32px;
+    font-style: italic;
+}
