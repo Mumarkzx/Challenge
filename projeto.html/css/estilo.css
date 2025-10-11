@@ -76,6 +76,7 @@ footer {
     height: 120px;
     padding: 10px 0; 
     margin-top: auto;
+    text-align: center;
 }
 main{
     font-family:Times New Roman;
@@ -173,6 +174,13 @@ main{
     text-align: center;
     font-size: 20px;
     color: #000000;
+    margin-top: 32px;   
+    font-style: italic;
+}
+#faq{
+    text-align: center;
+    font-size: 30px;
+    color: #f48609;
     margin-top: 32px;   
     font-style: italic;
 }
