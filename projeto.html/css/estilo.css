@@ -184,3 +184,14 @@ main{
     margin-top: 32px;   
     font-style: italic;
 }
+footer, ul , li{
+    ul li {
+  display: inline;   
+  margin-right: 15px;   /* espaço entre os links */
+}
+
+}
+.integrantes-section {
+    text-align: center;
+    padding: 40px 20px;
+}
