@@ -83,7 +83,7 @@ main{
 .contato {
   width: 50%;
   margin: 50px auto;
-  background-color: #f5f5f5;
+  background-color: #c8c8c8;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -91,7 +91,7 @@ main{
 
 .contato h2 {
   text-align: center;
-  color: #f1d324; 
+  color: #000000; 
 }
 
 .form-contato {
@@ -121,7 +121,7 @@ main{
 
 .form-contato button {
   background-color: #f1d324;
-  color: white;
+  color: rgb(128, 128, 128);
   border: none;
   padding: 12px;
   border-radius: 5px;
@@ -131,7 +131,7 @@ main{
 }
 
 .form-contato button:hover {
-  background-color: #558b2f;
+  background-color: #bbb7a3;
 }
 
 #programas{
