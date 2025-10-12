@@ -170,13 +170,24 @@ main{
     margin-top: 32px;   
     font-style: italic;
 }  
-#estatisticas{
-    text-align: center;
-    font-size: 20px;
-    color: #000000;
-    margin-top: 32px;   
-    font-style: italic;
+.estatisticas {
+  display: flex;                
+  justify-content: center;     
+  align-items: center;          
+  flex-direction: column;       
+  text-align: center;
+  font-style: italic;
 }
+
+.estatisticas span {
+  background-color: #b6b6b6;    
+  color: black;                 
+  display: inline-block;        
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin: 5px 0;
+}
+
 #faq{
     text-align: center;
     font-size: 30px;
