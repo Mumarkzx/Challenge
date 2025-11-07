@@ -242,3 +242,9 @@ footer, ul , li{
     color: #333;
     margin-top: 5px;
 }
+.logo-parceiros {
+    display: inline-block;
+    margin: 50px;
+    width: 200px;
+    border-radius: 10px;
+}
