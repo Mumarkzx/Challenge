@@ -283,3 +283,40 @@ footer, ul , li{
     font-size: 1rem;
   }
 }
+@media (min-width: 768px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  #menu ul {
+    justify-content: flex-end;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  aside {
+    width: 80%;
+    margin: 20px auto;
+  }
+}
+
+@media (min-width: 992px) {
+  main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+  }
+
+  aside {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1300px) {
+  main {
+    max-width: 1300px;
+  }
+}
