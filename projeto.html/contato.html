@@ -1,68 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turma Do Bem</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Turma Do Bem - Contato</title>
 
-    <link rel="stylesheet" href="css/estilo.css">
-    <link rel="stylesheet" href="../projeto.html/js/estilo.js">
-
+  <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
-    <header>
-        <img src="./img/img2.jpg" alt="logo turma do bem" id="logo">
-        <h1>Turma Do Bem - Contato</h1>
-        <nav id="menu">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="contato.html">Contato</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="integrantes.html">Integrantes</a></li>
-                <li><a href="parceiros.html">Parceiros</a></li>
-            </ul>
-        </nav>  
-    </header>
-<main>
+  <header>
+    <img src="./img/img2.jpg" alt="logo turma do bem" id="logo">
+    <h1>Turma Do Bem - Contato</h1>
+    <nav id="menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="integrantes.html">Integrantes</a></li>
+        <li><a href="parceiros.html">Parceiros</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
     <section>
-        <h2>Meios de Contatos</h2>
-        <p>Se você deseja entrar em contato conosco, por favor, utilize as informações abaixo:</p>
-        <ul>
-            <li><a href="https://www.facebook.com/turmadobem/?locale=pt_BR" target="_blank">Facebook</a></li>
-            <li><a href="https://www.instagram.com/ongturmadobem/" target="_blank">Instagram</a></li>
-            <li>Email: contato@turmadobem.com</li>
-            <li>Telefone: (11) 1234-5678</li>
-            <li>WhatsApp: (11) 9876-5432</li>
-            <li>Endereço: Rua Exemplo, 123 - São Paulo, SP</li>
-        </ul>
+      <h2>Meios de Contatos</h2>
+      <p>Se você deseja entrar em contato conosco, por favor, utilize as informações abaixo:</p>
+      <ul>
+        <li><a href="https://www.facebook.com/turmadobem/?locale=pt_BR" target="_blank">Facebook</a></li>
+        <li><a href="https://www.instagram.com/ongturmadobem/" target="_blank">Instagram</a></li>
+        <li>Email: contato@turmadobem.com</li>
+        <li>Telefone: (11) 1234-5678</li>
+        <li>WhatsApp: (11) 9876-5432</li>
+        <li>Endereço: Rua Exemplo, 123 - São Paulo, SP</li>
+      </ul>
     </section>
+
+
+    <button id="toggle-form" aria-expanded="true"
+      style="background-color:#f1d324; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; margin:20px 0;">
+      Ocultar formulário
+    </button>
+
+    
     <section class="contato">
-  <h2>Formulário de Contato</h2>
+      <h2>Formulário de Contato</h2>
 
-  <form action="#" method="post" class="form-contato">
-    <label for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome" required>
+      <form id="form-contato" action="#" method="post" class="form-contato">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
 
-    <label for="mensagem">Mensagem:</label>
-    <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
 
-    <button type="submit">Enviar</button>
-  </form>
-</section>
-</main>
-    <footer>
-             <nav>
-        <ul>
-          <li><a href="https://www.facebook.com/turmadobem/?locale=pt_BR" target="_blank">Facebook</a></li>
-          <li><a href="https://www.instagram.com/ongturmadobem/" target="_blank">Instagram</a></li>
-          <li><a href="https://www.youtube.com/c/F%C3%A1bioBibancos" target="_blank">YouTube</a></li>
-        </ul>
-      </nav>
-      <p>&copy;  2025. Turma do Bem - Contato</p>
-    </footer>
+        <button type="submit">Enviar</button>
+      </form>
+
+      <p id="mensagem-erro" style="color:red; text-align:center; display:none; margin-top:12px;"></p>
+      <p id="mensagem-sucesso" style="color:green; text-align:center; display:none; margin-top:12px;"></p>
+    </section>
+  </main>
+
+  <footer>
+    <nav>
+      <ul>
+        <li><a href="https://www.facebook.com/turmadobem/?locale=pt_BR" target="_blank">Facebook</a></li>
+        <li><a href="https://www.instagram.com/ongturmadobem/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.youtube.com/c/F%C3%A1bioBibancos" target="_blank">YouTube</a></li>
+      </ul>
+    </nav>
+    <p>&copy; 2025. Turma do Bem - Contato</p>
+  </footer>
+
+  <script src="./js/estilo.js"></script>
 </body>
 </html>
