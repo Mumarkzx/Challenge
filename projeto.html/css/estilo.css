@@ -13,19 +13,25 @@ body{
     border-radius:20px;
 }
 
-#menu{
-    background-color: #f1d324;
-    width: 100%;
-    height: 80px;
+#menu {
+  background-color: #f1d324;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#menu ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    text-align: center;
+#menu ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; 
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
+
     
 #menu ul li{
     display: inline-block;
