@@ -4,26 +4,33 @@ Link para o GitHub
 🦷 Turma do Bem 
 Este repositório contém o código-fonte de uma página institucional da ONG Turma do Bem, que promove saúde bucal gratuita para crianças e adolescentes em situação de vulnerabilidade social.
 
- Visão Geral
+Estatísticas Apresentadas
 
-A página apresenta:
-- Informações sobre a missão da ONG
-- Estatísticas de impacto social
-- Formas de contribuição
-- Navegação entre páginas como Home, Sobre, Contato, FAQ e Integrantes
-- Links para redes sociais
++82 mil jovens
++1,1 mil mulheres responderam
++18 mil dentistas voluntários
 
-Tecnologias Utilizadas
-- HTML5
-- CSS3
-- Estrutura modular com pastas para imagens e estilos
+Redes Sociais
 
- Estatísticas Apresentadas
-- +82 mil jovens atendidos
-- +1.1 mil mulheres atendidas
-- +18 mil dentistas voluntários
+Facebook
+Instagram
+YOUTUBE
 
- Redes Socias
-- Facebook
-- Instagram
-- YOUTUBE
+---
+
+## 💻 Tecnologias Utilizadas
+- **HTML5** → estrutura semântica das páginas  
+- **CSS3** → estilização, responsividade e layout flexível  
+- **JavaScript (ES6)** → interatividade e validação de formulários  
+- **Git & GitHub** → versionamento e colaboração  
+- **GitHub Pages** → publicação do site online  
+
+---
+
+## 🧩 Funcionalidades Implementadas
+✅ Layout responsivo (breakpoints em 600px, 768px, 992px e 1300px)  
+✅ Menu de navegação com hover e design adaptável  
+✅ Formulário de contato com **validação via JavaScript**  
+✅ Botão de **mostrar/ocultar formulário** (interatividade DOM)  
+✅ Mensagens de sucesso e erro dinâmicas  
+✅ Estrutura de pastas organizada e semântica HTML completa  
