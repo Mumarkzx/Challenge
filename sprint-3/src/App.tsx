@@ -1,5 +1,7 @@
+import AppRoutes from "./routes/AppRoutes";
+
 function App() {
-  return <h1>Projeto Sprint 03</h1>;
+  return <AppRoutes />;
 }
 
 export default App;
