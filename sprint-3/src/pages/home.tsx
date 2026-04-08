@@ -1,3 +1,10 @@
+import Layout from "../components/Layout";
+
 export default function Home() {
-  return <h1>Home</h1>;
+  return (
+    <Layout>
+      <h2>Home</h2>
+      <p>Bem-vindo ao projeto Turma do Bem.</p>
+    </Layout>
+  );
 }
