@@ -8,10 +8,12 @@ type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <>
+    <div className="app-shell">
       <Header />
-      <main>{children}</main>
+      <main className="page-main">
+        <div className="container">{children}</div>
+      </main>
       <Footer />
-    </>
+    </div>
   );
 }

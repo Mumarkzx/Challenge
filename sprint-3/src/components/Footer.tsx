@@ -1,8 +1,11 @@
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer>
-      <nav>
-        <ul>
+    <footer className="site-footer">
+      <div className="container footer-content">
+        <nav aria-label="Redes sociais">
+          <ul className="social-list">
           <li>
             <a
               href="https://www.facebook.com/turmadobem/?locale=pt_BR"
@@ -30,10 +33,11 @@ export default function Footer() {
               YouTube
             </a>
           </li>
-        </ul>
-      </nav>
+          </ul>
+        </nav>
 
-      <p>&copy; 2025. Turma do Bem - Home</p>
+        <p>&copy; {currentYear} Turma do Bem. Todos os direitos reservados.</p>
+      </div>
     </footer>
   );
 }

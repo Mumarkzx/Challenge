@@ -1,20 +1,43 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+const navigationItems = [
+  { to: "/", label: "Home" },
+  { to: "/sobre", label: "Sobre" },
+  { to: "/contato", label: "Contato" },
+  { to: "/faq", label: "FAQ" },
+  { to: "/integrantes", label: "Integrantes" },
+  { to: "/solucao", label: "Solução" }, 
+];
 
 export default function Header() {
   return (
-    <header>
-      <h1>Turma do Bem</h1>
+    <header className="site-header">
+      <div className="container header-content">
+        <div className="brand-block">
+          <img
+            className="brand-logo"
+            src="/img/logo-tdb.jpg"
+            alt="Logo Turma do Bem"
+          />
+          <h1 className="brand-title">Turma do Bem</h1>
+        </div>
 
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/sobre">Sobre</Link></li>
-          <li><Link to="/contato">Contato</Link></li>
-          <li><Link to="/faq">FAQ</Link></li>
-          <li><Link to="/integrantes">Integrantes</Link></li>
-          <li><Link to="/solucao">Solução</Link></li>
-        </ul>
-      </nav>
+        <nav id="menu" aria-label="Menu principal">
+          <ul className="menu-list">
+            {navigationItems.map((item) => (
+              <li key={item.to}>
+                <NavLink
+  to={item.to}
+  className={({ isActive }) => (isActive ? "active" : "")}
+  end={item.to === "/"}
+>
+  {item.label}
+</NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 }
