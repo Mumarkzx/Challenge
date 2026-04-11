@@ -6,33 +6,39 @@ const navigationItems = [
   { to: "/contato", label: "Contato" },
   { to: "/faq", label: "FAQ" },
   { to: "/integrantes", label: "Integrantes" },
-  { to: "/solucao", label: "Solução" }, 
+  { to: "/solucao", label: "Solução" },
 ];
 
 export default function Header() {
   return (
-    <header className="site-header">
-      <div className="container header-content">
-        <div className="brand-block">
+    <header className="border-b border-yellow-200 bg-green-400 sticky top-0 z-20">
+      <div className="w-full max-w-5xl mx-auto px-4 flex items-center justify-between gap-5 py-4 flex-wrap">
+        <div className="flex items-center gap-3">
           <img
-            className="brand-logo"
+            className="w-12 h-12 object-contain"
             src="/img/logo-tdb.jpg"
             alt="Logo Turma do Bem"
           />
-          <h1 className="brand-title">Turma do Bem</h1>
+          <h1 className="m-0 text-xl font-extrabold text-gray-900">Turma do Bem</h1>
         </div>
 
-        <nav id="menu" aria-label="Menu principal">
-          <ul className="menu-list">
+        <nav aria-label="Menu principal">
+          <ul className="m-0 p-0 list-none flex items-center gap-2 flex-wrap">
             {navigationItems.map((item) => (
               <li key={item.to}>
                 <NavLink
-  to={item.to}
-  className={({ isActive }) => (isActive ? "active" : "")}
-  end={item.to === "/"}
->
-  {item.label}
-</NavLink>
+                  to={item.to}
+                  end={item.to === "/"}
+                  className={({ isActive }) =>
+                    `no-underline px-3 py-2 rounded-lg font-semibold text-sm transition-colors duration-200 border ${
+                      isActive
+                        ? "bg-white text-gray-900 border-gray-900"
+                        : "bg-gray-900 text-white border-gray-900 hover:bg-white hover:text-gray-900"
+                    }`
+                  }
+                >
+                  {item.label}
+                </NavLink>
               </li>
             ))}
           </ul>

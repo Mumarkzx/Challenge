@@ -8,10 +8,10 @@ type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="app-shell">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-yellow-50 to-yellow-100">
       <Header />
-      <main className="page-main">
-        <div className="container">{children}</div>
+      <main className="flex-1 py-9">
+        <div className="w-full max-w-5xl mx-auto px-4">{children}</div>
       </main>
       <Footer />
     </div>

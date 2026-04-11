@@ -5,39 +5,52 @@ export default function Home() {
   useDocumentTitle("Home");
   return (
     <Layout>
-      <img id="hero" src="/img/img1.webp" alt="Turma do bem" />
-      <div id="legendas">
+      <img
+        src="/img/img1.webp"
+        alt="Turma do bem"
+        className="w-full rounded-2xl object-cover max-h-80 mb-4"
+      />
+      <div className="text-center italic text-gray-600 mb-6">
         <p>"Um sorriso pode mudar tudo. A Turma do Bem leva saúde bucal a quem mais precisa."</p>
       </div>
-      <main>
-        <h2>Bem-vindo à Turma do Bem!</h2>
-        <p>
-          A Turma do Bem é uma organização sem fins lucrativos dedicada a levar saúde bucal e sorrisos para crianças e adolescentes em situação de vulnerabilidade social. Nosso objetivo é transformar vidas por meio do acesso a tratamentos odontológicos gratuitos, promovendo o bem-estar e a autoestima.
+
+      <div className="bg-white rounded-2xl shadow p-8 max-w-3xl mx-auto">
+        <h2 className="text-3xl font-bold mb-4 text-center">Bem-vindo à Turma do Bem!</h2>
+        <p className="text-gray-600 leading-relaxed mb-4">
+          A Turma do Bem é uma organização sem fins lucrativos dedicada a levar saúde bucal e sorrisos para crianças e adolescentes em situação de vulnerabilidade social.
         </p>
-        <p>
-          Desde nossa fundação, já impactamos milhares de vidas, proporcionando cuidados dentários essenciais e educação sobre higiene bucal. Acreditamos que um sorriso saudável é um direito de todos, e trabalhamos incansavelmente para garantir que mais pessoas tenham acesso a esse direito.
+        <p className="text-gray-600 leading-relaxed mb-4">
+          Desde nossa fundação, já impactamos milhares de vidas, proporcionando cuidados dentários essenciais e educação sobre higiene bucal.
         </p>
-        <p>
-          Junte-se a nós nessa missão! Seja como voluntário, doador ou parceiro, sua contribuição faz toda a diferença. Vamos juntos construir um futuro mais sorridente para nossas crianças e adolescentes.
+        <p className="text-gray-600 leading-relaxed mb-6">
+          Junte-se a nós nessa missão! Seja como voluntário, doador ou parceiro, sua contribuição faz toda a diferença.
         </p>
-        <aside>
-          <section className="estatisticas">
-            <div className="conteudo">
-              <h2><span>Estatísticas</span></h2>
-              <p><span>+82 mil jovens atendidos</span></p>
-              <p><span>+1.1 mil mulheres atendidas</span></p>
-              <p><span>+18 mil dentistas voluntários</span></p>
+
+        <section className="bg-yellow-100 rounded-xl p-6 mb-6">
+          <h2 className="text-xl font-bold mb-3 text-center">Estatísticas</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+            <div className="bg-white rounded-lg p-4 shadow-sm">
+              <p className="font-bold text-green-600 text-lg">+82 mil</p>
+              <p className="text-gray-600 text-sm">jovens atendidos</p>
             </div>
-          </section>
-          <h3>Como você pode ajudar:</h3>
-          <ul>
-            <li>Seja um voluntário e participe das nossas ações.</li>
-            <li>Faça uma doação para apoiar nossos projetos.</li>
-            <li>Compartilhe nossa missão com amigos e familiares.</li>
-          </ul>
-          <p>Para mais informações, visite nossas outras páginas ou entre em contato conosco!</p>
-        </aside>
-      </main>
+            <div className="bg-white rounded-lg p-4 shadow-sm">
+              <p className="font-bold text-green-600 text-lg">+1.1 mil</p>
+              <p className="text-gray-600 text-sm">mulheres atendidas</p>
+            </div>
+            <div className="bg-white rounded-lg p-4 shadow-sm">
+              <p className="font-bold text-green-600 text-lg">+18 mil</p>
+              <p className="text-gray-600 text-sm">dentistas voluntários</p>
+            </div>
+          </div>
+        </section>
+
+        <h3 className="font-bold text-lg mb-2">Como você pode ajudar:</h3>
+        <ul className="list-disc list-inside text-gray-600 space-y-1">
+          <li>Seja um voluntário e participe das nossas ações.</li>
+          <li>Faça uma doação para apoiar nossos projetos.</li>
+          <li>Compartilhe nossa missão com amigos e familiares.</li>
+        </ul>
+      </div>
     </Layout>
   );
 }

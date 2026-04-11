@@ -5,50 +5,46 @@ export default function Sobre() {
   useDocumentTitle("Sobre");
   return (
     <Layout>
-      <section id="sobre">
-        <h2>Sobre nós</h2>
-        <p>
+      <section className="bg-white border border-yellow-200 rounded-2xl shadow p-6 mb-6">
+        <h2 className="text-3xl font-bold mb-3">Sobre nós</h2>
+        <p className="text-gray-600 leading-relaxed mb-4">
           A Turma do Bem é uma organização sem fins lucrativos que tem como missão levar saúde bucal e sorrisos para crianças e adolescentes em situação de vulnerabilidade social. Fundada em 2003, a ONG já impactou a vida de milhares de jovens por meio de tratamentos odontológicos gratuitos e ações educativas.
         </p>
-        <p>
-          Nossa equipe é composta por voluntários dedicados, incluindo dentistas, estudantes de odontologia e profissionais de diversas áreas, que trabalham juntos para proporcionar um futuro melhor para aqueles que mais precisam. Acreditamos que um sorriso saudável é um direito de todos, e nos esforçamos para garantir que nossas crianças e adolescentes tenham acesso a esse direito fundamental.
+        <p className="text-gray-600 leading-relaxed mb-4">
+          Nossa equipe é composta por voluntários dedicados, incluindo dentistas, estudantes de odontologia e profissionais de diversas áreas, que trabalham juntos para proporcionar um futuro melhor para aqueles que mais precisam.
         </p>
-        <aside>
-          <h3>Nossa missão</h3>
-          <p>Promover inclusão social por meio do acesso à saúde bucal, transformando vidas com dignidade e sorriso.</p>
+        <aside className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mb-4">
+          <h3 className="font-bold text-lg mb-1">Nossa missão</h3>
+          <p className="text-gray-600">Promover inclusão social por meio do acesso à saúde bucal, transformando vidas com dignidade e sorriso.</p>
         </aside>
-        <h3>Nossa visão</h3>
-        <p>Ser referência nacional em ações de saúde bucal para crianças e adolescentes em situação de vulnerabilidade social.</p>
+        <h3 className="font-bold text-lg mb-1">Nossa visão</h3>
+        <p className="text-gray-600">Ser referência nacional em ações de saúde bucal para crianças e adolescentes em situação de vulnerabilidade social.</p>
       </section>
 
-      <section id="programas">
-        <h4>Programas</h4>
-        <div style={{ display: 'flex', gap: 32, justifyContent: 'center', margin: '32px 0' }}>
-          <div style={{ textAlign: 'center' }}>
+      <section className="bg-white border border-yellow-200 rounded-2xl shadow p-6">
+        <h4 className="text-xl font-bold mb-6 text-center">Programas</h4>
+        <div className="flex flex-col md:flex-row gap-8 justify-center">
+          <div className="text-center flex-1">
             <img
-              id="dentistaDoBem"
               src="/img/img_dentistaBem.jpg"
               alt="Dentista do Bem"
-              style={{ width: 220, height: 220, borderRadius: '50%', objectFit: 'cover' }}
+              className="w-48 h-48 rounded-full object-cover mx-auto mb-4"
             />
-            <div id="legenda1.0">
-              <p>
-                O Dentista do Bem é o principal programa da TdB, destinado a crianças e adolescentes em situação de vulnerabilidade social na faixa dos 11 a 17 anos. Os nossos beneficiários possuem graves problemas bucais e não têm condições financeiras de pagar pelo tratamento. Após serem selecionados e entrarem no programa, os jovens recebem atendimento odontológico e gratuito – independente da complexidade dos casos – até completarem 18 anos.
-              </p>
-            </div>
+            <h5 className="font-bold text-lg mb-2">Dentista do Bem</h5>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Destinado a crianças e adolescentes em situação de vulnerabilidade social na faixa dos 11 a 17 anos. Os beneficiários recebem atendimento odontológico gratuito até completarem 18 anos.
+            </p>
           </div>
-          <div style={{ textAlign: 'center' }}>
+          <div className="text-center flex-1">
             <img
-              id="apoloniasDoBem"
               src="/img/apolonias-do-bem-1.png"
               alt="Apolônias do Bem"
-              style={{ width: 220, height: 220, borderRadius: '50%', objectFit: 'cover' }}
+              className="w-48 h-48 rounded-full object-cover mx-auto mb-4"
             />
-            <div id="legenda1.1">
-              <p>
-                Apolônias do Bem oferece tratamento odontológico e gratuito para mulheres cis e trans que vivenciaram situações de violência e tiveram a dentição afetada pelas agressões. As beneficiárias são selecionadas através de triagens em que passam por um rápido exame oral, não invasivo, e respondem a uma ferramenta científica que mede o impacto da saúde bucal na qualidade de vida de uma pessoa.
-              </p>
-            </div>
+            <h5 className="font-bold text-lg mb-2">Apolônias do Bem</h5>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Oferece tratamento odontológico gratuito para mulheres cis e trans que vivenciaram situações de violência e tiveram a dentição afetada pelas agressões.
+            </p>
           </div>
         </div>
       </section>
