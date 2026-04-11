@@ -11,7 +11,7 @@ const navigationItems = [
 
 export default function Header() {
   return (
-    <header className="border-b border-yellow-200 bg-green-400 sticky top-0 z-20">
+    <header className="bg-yellow-400 shadow">
       <div className="w-full max-w-5xl mx-auto px-4 flex items-center justify-between gap-5 py-4 flex-wrap">
         <div className="flex items-center gap-3">
           <img

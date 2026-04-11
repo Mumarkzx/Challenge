@@ -4,19 +4,16 @@ import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const faqItems = [
   {
-    question: "O que e a Turma do Bem?",
-    answer:
-      "E uma ONG que promove saude bucal para criancas e adolescentes em situacao de vulnerabilidade.",
+    question: "O que é a Turma do Bem?",
+    answer: "É uma ONG que promove saúde bucal para crianças e adolescentes em situação de vulnerabilidade.",
   },
   {
     question: "Como posso ajudar?",
-    answer:
-      "Voce pode apoiar com voluntariado, doacoes ou divulgacao da causa.",
+    answer: "Você pode apoiar com voluntariado, doações ou divulgação da causa.",
   },
   {
     question: "Quem pode participar?",
-    answer:
-      "Dentistas, parceiros e qualquer pessoa interessada em contribuir com o impacto social.",
+    answer: "Dentistas, parceiros e qualquer pessoa interessada em contribuir com o impacto social.",
   },
 ];
 
@@ -30,30 +27,33 @@ export default function FAQ() {
 
   return (
     <Layout>
-      <section className="content-section">
-        <h2>Perguntas frequentes</h2>
-        <p>Tire as principais duvidas sobre o projeto e como contribuir.</p>
+      <section className="bg-white border border-yellow-200 rounded-2xl shadow p-6 mb-6">
+        <h2 className="text-3xl font-bold mb-2">Perguntas frequentes</h2>
+        <p className="text-gray-600">Tire as principais dúvidas sobre o projeto e como contribuir.</p>
       </section>
 
-      <section className="faq-list">
+      <div className="grid gap-3">
         {faqItems.map((item, index) => (
-          <article className={`faq-item ${open === index ? "open" : ""}`} key={item.question}>
+          <article key={item.question} className="bg-white border border-yellow-200 rounded-xl overflow-hidden">
             <button
-              className="faq-question"
+              className="w-full text-left border-0 bg-transparent px-5 py-4 text-base font-bold text-gray-900 cursor-pointer hover:bg-yellow-50 transition-colors duration-150"
               onClick={() => toggle(index)}
               aria-expanded={open === index}
               aria-controls={`faq-answer-${index}`}
             >
-              {item.question}
+              <span className="flex items-center justify-between">
+                {item.question}
+                <span className="text-green-500 text-xl">{open === index ? "−" : "+"}</span>
+              </span>
             </button>
             {open === index && (
-              <p className="faq-answer" id={`faq-answer-${index}`}>
+              <p className="px-5 pb-4 m-0 text-gray-600 leading-relaxed" id={`faq-answer-${index}`}>
                 {item.answer}
               </p>
             )}
           </article>
         ))}
-      </section>
+      </div>
     </Layout>
   );
 }

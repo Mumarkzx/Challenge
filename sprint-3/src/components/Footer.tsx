@@ -2,7 +2,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-green-400 text-gray-900 mt-auto">
+    <footer className="bg-yellow-400 text-gray-900 mt-auto">
       <div className="w-full max-w-5xl mx-auto px-4 min-h-16 flex items-center justify-between gap-3 py-4 flex-wrap">
         <nav aria-label="Redes sociais">
           <ul className="m-0 p-0 list-none flex gap-3 flex-wrap">
