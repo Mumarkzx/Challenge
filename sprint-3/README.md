@@ -1,45 +1,61 @@
-# Turma do Bem - Sprint 3
+# Turma do Bem
 
-Aplicacao React + TypeScript para apresentar a iniciativa Turma do Bem, com paginas institucionais, FAQ interativo, contato com validacao e area de integrantes com detalhes individuais.
+> Inclusão social através do sorriso 🦷
 
-## Stack
+Aplicação web desenvolvida para apresentar a iniciativa da ONG Turma do Bem, com páginas institucionais, FAQ interativo, formulário de contato com validação e área de integrantes com detalhes individuais.
+
+---
+
+## 🛠 Tecnologias utilizadas
 
 - React 19
 - TypeScript
 - Vite
-- React Router
+- Tailwind CSS
+- React Router DOM
 - React Hook Form
 - ESLint
 
-## Como executar
+---
 
+## 📁 Estrutura de pastas
+src/
+├── components/   → Header, Footer, Layout
+├── pages/        → Home, Sobre, FAQ, Contato, Integrantes, Solução
+├── routes/       → Definição central das rotas
+├── data/         → Dados estáticos dos integrantes
+├── hooks/        → Hooks reutilizáveis
+
+---
+
+## 👥 Integrantes
+
+| Nome | RM | Turma | GitHub | LinkedIn |
+|------|----|-------|--------|----------|
+| Murilo Marques | 568224 | 1TDSPB | [GitHub](https://github.com/Mumarkzx) | [LinkedIn](https://www.linkedin.com/in/murilo-marques-64603a1b9/) |
+| Kenji Fernandes | 568156 | 1TDSPB | [GitHub](https://github.com/KenjiFW13) | [LinkedIn](https://www.linkedin.com/in/kenji-fernandes-wakabayashi/) |
+| Paulo Henrique Kian | 563343 | 1TDSPB | [GitHub](https://github.com/PhKian) | [LinkedIn](https://www.linkedin.com/in/paulo-henrique-oliveira-3b4b621b2/) |
+
+---
+
+## 🚀 Como usar
+
+### Pré-requisitos
+- Node.js instalado
+
+### Instalação
 ```bash
 npm install
 npm run dev
 ```
 
-A aplicacao sobe em `http://localhost:5173`.
+A aplicação sobe em `http://localhost:5173`.
 
-## Scripts disponiveis
+### Links
+- 🔗 Repositório: [github.com/Mumarkzx/Challenge](https://github.com/Mumarkzx/Challenge)
+- 🎥 Vídeo: [COLE O LINK DO YOUTUBE AQUI]
 
-- `npm run dev`: ambiente local com hot reload
-- `npm run build`: validacao TypeScript + build de producao
-- `npm run preview`: executa build localmente
-- `npm run lint`: analise estatica com ESLint
+---
 
-## Estrutura principal
+## 📞 Contato
 
-- `src/components`: layout, header e footer
-- `src/pages`: paginas e rotas de conteudo
-- `src/routes`: definicao central das rotas
-- `src/data`: dados estaticos de integrantes
-- `src/hooks`: hooks reutilizaveis (ex.: titulo da pagina)
-- `src/css`: estilos globais
-
-## Boas praticas adotadas
-
-- Navegacao com rota 404 para paths invalidos
-- Titulo de pagina dinamico por rota
-- Formulario de contato com validacao de campos
-- FAQ com atributos de acessibilidade (`aria-expanded` e `aria-controls`)
-- Remocao de arquivos duplicados para manter o repositorio limpo
