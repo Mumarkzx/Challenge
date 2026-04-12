@@ -33,7 +33,7 @@ export default function Sobre() {
             <h5 className="font-bold text-lg mb-2">Dentista do Bem</h5>
             <p className="text-gray-600 text-sm leading-relaxed">
               Destinado a crianças e adolescentes em situação de vulnerabilidade social na faixa dos 11 a 17 anos. Os beneficiários recebem atendimento odontológico gratuito até completarem 18 anos.
-            </p>
+            </p>          
           </div>
           <div className="text-center flex-1">
             <img
