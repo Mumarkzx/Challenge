@@ -46,7 +46,7 @@ export default function DetalheIntegrante() {
           <p className="mb-2"><strong>RM:</strong> {integrante.rm}</p>
           <p className="mb-2"><strong>Turma:</strong> {integrante.turma}</p>
           <p className="mb-2">
-            <strong>GitHub:</strong>{" "}
+            <strong>GitHub:</strong>{" "}     
             <a href={integrante.github} target="_blank" rel="noreferrer" className="text-green-700 break-all hover:underline">
               {integrante.github}
             </a>
