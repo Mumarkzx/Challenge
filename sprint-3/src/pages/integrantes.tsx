@@ -16,9 +16,9 @@ const LinkedInIcon = () => (
 );
 
 export default function Integrantes() {
-  useDocumentTitle("Integrantes");        
+  useDocumentTitle("Integrantes");              
   const navigate = useNavigate();     
-          
+
   return (
     <Layout>
       <section className="bg-white border border-yellow-200 rounded-2xl shadow p-6 mb-6">
