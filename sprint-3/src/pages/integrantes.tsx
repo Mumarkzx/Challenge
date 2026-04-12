@@ -17,7 +17,7 @@ const LinkedInIcon = () => (
 
 export default function Integrantes() {
   useDocumentTitle("Integrantes");
-  const navigate = useNavigate();
+  const navigate = useNavigate();     
 
   return (
     <Layout>
