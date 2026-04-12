@@ -53,7 +53,7 @@ A aplicação sobe em `http://localhost:5173`.
 
 ### Links
 - 🔗 Repositório: [github.com/Mumarkzx/Challenge](https://github.com/Mumarkzx/Challenge)
-- 🎥 Vídeo: [COLE O LINK DO YOUTUBE AQUI]
+- 🎥 Vídeo: [https://youtu.be/Efy4nq34xKI]
 
 ---
 
