@@ -78,7 +78,7 @@ export default function Contato() {
           />
           {errors.mensagem && <p className="text-red-600 text-sm -mt-1">{errors.mensagem.message}</p>}
 
-          <button
+          <button         
             type="submit"
             disabled={isSubmitting}
             className="mt-2 w-fit bg-green-400 text-gray-900 border-0 rounded-xl px-5 py-3 font-bold cursor-pointer hover:bg-green-500 transition-colors duration-200 disabled:opacity-75 disabled:cursor-not-allowed"
