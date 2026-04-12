@@ -39,7 +39,7 @@ export default function FAQ() {
               className="w-full text-left border-0 bg-transparent px-5 py-4 text-base font-bold text-gray-900 cursor-pointer hover:bg-yellow-50 transition-colors duration-150"
               onClick={() => toggle(index)}
               aria-expanded={open === index}
-              aria-controls={`faq-answer-${index}`}
+              aria-controls={`faq-answer-${index}`}       
             >
               <span className="flex items-center justify-between">
                 {item.question}
