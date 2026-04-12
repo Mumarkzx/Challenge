@@ -28,7 +28,7 @@ export default function Home() {
 
         <section className="bg-yellow-100 rounded-xl p-6 mb-6">
           <h2 className="text-xl font-bold mb-3 text-center">Estatísticas</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">     
             <div className="bg-white rounded-lg p-4 shadow-sm">
               <p className="font-bold text-green-600 text-lg">+82 mil</p>
               <p className="text-gray-600 text-sm">jovens atendidos</p>
