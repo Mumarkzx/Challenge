@@ -6,7 +6,7 @@ import Contato from "../pages/contato";
 import Integrantes from "../pages/integrantes";
 import Solucao from "../pages/solucao";
 import DetalheIntegrante from "../pages/DetalheIntegrante";
-import Agendamento from "../pages/agendamento";
+import Agendamento from "../pages/agendamento"
 import Pacientes from "../pages/Pacientes";
 import NotFound from "../pages/NotFound";
 

@@ -7,6 +7,8 @@ const navigationItems = [
   { to: "/faq", label: "FAQ" },
   { to: "/integrantes", label: "Integrantes" },
   { to: "/solucao", label: "Solução" },
+  { to: "/agendamento", label: "Agendamento" },
+  { to: "/pacientes", label: "Pacientes" },
 ];
 
 export default function Header() {
