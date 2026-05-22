@@ -2,7 +2,7 @@
 
 > Inclusão social através do sorriso 🦷
 
-Aplicação web desenvolvida para apresentar a iniciativa da ONG Turma do Bem, com páginas institucionais, FAQ interativo, formulário de contato com validação e área de integrantes com detalhes individuais.
+Aplicação web desenvolvida para apresentar a iniciativa da ONG Turma do Bem, com páginas institucionais, FAQ interativo, formulário de contato com validação, agendamento de atendimentos e área de integrantes com detalhes individuais.
 
 ---
 
@@ -21,14 +21,13 @@ Aplicação web desenvolvida para apresentar a iniciativa da ONG Turma do Bem, c
 ## 📁 Estrutura de pastas
 src/
 ├── components/   → Header, Footer, Layout
-├── pages/        → Home, Sobre, FAQ, Contato, Integrantes, Solução
+├── pages/        → Home, Sobre, FAQ, Contato, Integrantes, Solução, Agendamento, Pacientes
 ├── routes/       → Definição central das rotas
 ├── data/         → Dados estáticos dos integrantes
 ├── hooks/        → Hooks reutilizáveis
-
 ---
 
-## 👥 Integrantes
+## 👥 Autores e Créditos
 
 | Nome | RM | Turma | GitHub | LinkedIn |
 |------|----|-------|--------|----------|
@@ -44,18 +43,23 @@ src/
 - Node.js instalado
 
 ### Instalação
+
 ```bash
 npm install
 npm run dev
 ```
 
-A aplicação sobe em `https://challenge-mu-markzx.vercel.app/`.
-
 ### Links
-- 🔗 Repositório: [github.com/Mumarkzx/Challenge](https://github.com/Mumarkzx/Challenge)
-- 🎥 Vídeo: [https://youtu.be/Efy4nq34xKI]
+- 🌐 Deploy: [https://challenge-mu-markzx.vercel.app/](https://challenge-mu-markzx.vercel.app/)
+- 🔗 Repositório: [https://github.com/Mumarkzx/Challenge](https://github.com/Mumarkzx/Challenge)
+- 🎥 Vídeo: [https://youtu.be/Efy4nq34xKI](https://youtu.be/Efy4nq34xKI)
 
 ---
 
 ## 📞 Contato
 
+| Nome | E-mail |
+|------|--------|
+| Murilo Marques | rm568224@fiap.com.br |
+| Kenji Fernandes | rm568156@fiap.com.br |
+| Paulo Henrique Kian | rm563343@fiap.com.br |
