@@ -6,6 +6,8 @@ import Contato from "../pages/contato";
 import Integrantes from "../pages/integrantes";
 import Solucao from "../pages/solucao";
 import DetalheIntegrante from "../pages/DetalheIntegrante";
+import Agendamento from "../pages/agendamento";
+import Pacientes from "../pages/Pacientes";
 import NotFound from "../pages/NotFound";
 
 export default function AppRoutes() {
@@ -19,6 +21,8 @@ export default function AppRoutes() {
         <Route path="/integrantes" element={<Integrantes />} />
         <Route path="/integrantes/:id" element={<DetalheIntegrante />} />
         <Route path="/solucao" element={<Solucao />} />
+        <Route path="/agendamento" element={<Agendamento />} />
+        <Route path="/pacientes" element={<Pacientes />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
