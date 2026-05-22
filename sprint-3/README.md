@@ -49,7 +49,7 @@ npm install
 npm run dev
 ```
 
-A aplicação sobe em `http://localhost:5173`.
+A aplicação sobe em `https://challenge-mu-markzx.vercel.app/`.
 
 ### Links
 - 🔗 Repositório: [github.com/Mumarkzx/Challenge](https://github.com/Mumarkzx/Challenge)
