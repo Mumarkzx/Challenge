@@ -5,8 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { Programa } from "../types";
 
-const API_URL = "http://localhost:8080";
-
+const API_URL = "https://projeto-java-sorriso-conectado-quarkus.onrender.com/";
 
 const programas: { value: Programa; label: string }[] = [
   { value: "Dentista do Bem", label: "Dentista do Bem" },

@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import type { Paciente } from "../types";
 
-const API_URL = "http://localhost:8080";
+const API_URL = "https://projeto-java-sorriso-conectado-quarkus.onrender.com/";
 
 export default function Pacientes() {
   useDocumentTitle("Pacientes");
