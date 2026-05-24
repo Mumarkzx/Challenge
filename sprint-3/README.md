@@ -52,7 +52,7 @@ npm run dev
 ### Links
 - 🌐 Deploy: [https://challenge-mu-markzx.vercel.app/](https://challenge-mu-markzx.vercel.app/)
 - 🔗 Repositório: [https://github.com/Mumarkzx/Challenge](https://github.com/Mumarkzx/Challenge)
-- 🎥 Vídeo: [https://youtu.be/Efy4nq34xKI](https://youtu.be/Efy4nq34xKI)
+    - 🎥 Vídeo: [https://youtu.be/NSg9e_VuBjg](https://youtu.be/NSg9e_VuBjg)
 
 ---
 
