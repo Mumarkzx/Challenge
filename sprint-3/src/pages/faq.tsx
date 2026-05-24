@@ -20,6 +20,7 @@ const faqItems = [
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
   useDocumentTitle("FAQ");
+  
 
   const toggle = (index: number) => {
     setOpen((current) => (current === index ? null : index));
