@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { Programa } from "../types";
 
-const API_URL = "https://projeto-java-sorriso-conectado-quarkus.onrender.com/";
+const API_URL = "https://projeto-java-sorriso-conectado-quarkus.onrender.com";
 
 const programas: { value: Programa; label: string }[] = [
   { value: "Dentista do Bem", label: "Dentista do Bem" },
@@ -28,27 +28,36 @@ export default function Agendamento() {
   const onSubmit = async (data: Record<string, string>) => {
     try {
       setErro(null);
+
+      // O Quarkus deserializa LocalDate a partir de "YYYY-MM-DD"
+      // que é exatamente o formato que o input type="date" já envia — sem converter.
       const res = await fetch(`${API_URL}/beneficiario`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          nome: data.nome,
-          cpf: data.cpf.replace(/\D/g, ""),
-          telefone: data.telefone.replace(/\D/g, ""),
-          email: data.email,
-          endereco: data.endereco,
-          dataNasc: data.data,
-          tratamentoSolicitado: data.programa,
-          statusVulnerabilidade: "Novo",
-          historia: "",
+          idBeneficiario:        parseInt(data.idBeneficiario),
+          nome:                  data.nome,
+          cpf:                   data.cpf.replace(/\D/g, ""),
+          telefone:              data.telefone.replace(/\D/g, ""),
+          email:                 data.email,
+          endereco:              data.endereco,
+          dataNasc:              data.dataNasc,           // "YYYY-MM-DD" → LocalDate ✓
+          tratamentoSolicitado:  data.tratamentoSolicitado,
+          statusVulnerabilidade: "Novo",                  // definido automaticamente
+          historia:              data.historia,
         }),
       });
 
-      if (!res.ok) throw new Error("Erro ao enviar.");
+      if (!res.ok) {
+        const msg = await res.text().catch(() => "");
+        throw new Error(msg || `Erro ${res.status}`);
+      }
+
       setEnviado(true);
       reset();
-    } catch {
-      setErro("Erro ao enviar agendamento. Tente novamente.");
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : "Erro desconhecido.";
+      setErro("Erro ao enviar agendamento: " + msg);
     }
   };
 
@@ -59,10 +68,16 @@ export default function Agendamento() {
           <h2 className="text-2xl font-bold mb-3 text-green-700">Agendamento realizado!</h2>
           <p className="text-gray-600 mb-6">Nossa equipe entrará em contato em breve.</p>
           <div className="flex gap-3 justify-center">
-            <button onClick={() => setEnviado(false)} className="bg-green-400 text-gray-900 px-5 py-2 rounded-xl font-bold border-0 cursor-pointer hover:bg-green-500 transition-colors">
+            <button
+              onClick={() => setEnviado(false)}
+              className="bg-green-400 text-gray-900 px-5 py-2 rounded-xl font-bold border-0 cursor-pointer hover:bg-green-500 transition-colors"
+            >
               Novo agendamento
             </button>
-            <button onClick={() => navigate("/pacientes")} className="bg-gray-900 text-white px-5 py-2 rounded-xl font-bold border-0 cursor-pointer hover:bg-gray-700 transition-colors">
+            <button
+              onClick={() => navigate("/pacientes")}
+              className="bg-gray-900 text-white px-5 py-2 rounded-xl font-bold border-0 cursor-pointer hover:bg-gray-700 transition-colors"
+            >
               Ver beneficiários
             </button>
           </div>
@@ -81,8 +96,28 @@ export default function Agendamento() {
       <section className="bg-white border border-yellow-200 rounded-2xl shadow p-6">
         <form className="grid gap-4 max-w-2xl" onSubmit={handleSubmit(onSubmit)} noValidate>
 
-          {erro && <p className="text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3">{erro}</p>}
+          {erro && (
+            <p className="text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+              {erro}
+            </p>
+          )}
 
+          {/* ID Beneficiário */}
+          <div>
+            <label className="block font-bold text-gray-900 mb-1" htmlFor="idBeneficiario">
+              ID do Beneficiário
+            </label>
+            <input id="idBeneficiario" type="number" placeholder="Ex: 1001"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-200"
+              {...register("idBeneficiario", {
+                required: "Informe o ID do beneficiário.",
+                min: { value: 1, message: "ID deve ser maior que zero." },
+              })}
+            />
+            {errors.idBeneficiario && <p className="text-red-600 text-sm mt-1">{errors.idBeneficiario.message}</p>}
+          </div>
+
+          {/* Nome */}
           <div>
             <label className="block font-bold text-gray-900 mb-1" htmlFor="nome">Nome completo</label>
             <input id="nome" type="text" placeholder="Ex: João da Silva"
@@ -92,6 +127,7 @@ export default function Agendamento() {
             {errors.nome && <p className="text-red-600 text-sm mt-1">{errors.nome.message}</p>}
           </div>
 
+          {/* CPF */}
           <div>
             <label className="block font-bold text-gray-900 mb-1" htmlFor="cpf">CPF</label>
             <input id="cpf" type="text" placeholder="000.000.000-00"
@@ -101,15 +137,20 @@ export default function Agendamento() {
             {errors.cpf && <p className="text-red-600 text-sm mt-1">{errors.cpf.message}</p>}
           </div>
 
+          {/* E-mail */}
           <div>
             <label className="block font-bold text-gray-900 mb-1" htmlFor="email">E-mail</label>
             <input id="email" type="email" placeholder="seuemail@exemplo.com"
               className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-200"
-              {...register("email", { required: "Informe seu e-mail.", pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "E-mail inválido." } })}
+              {...register("email", {
+                required: "Informe seu e-mail.",
+                pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "E-mail inválido." },
+              })}
             />
             {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email.message}</p>}
           </div>
 
+          {/* Telefone */}
           <div>
             <label className="block font-bold text-gray-900 mb-1" htmlFor="telefone">Telefone</label>
             <input id="telefone" type="tel" placeholder="(11) 99999-9999"
@@ -119,6 +160,7 @@ export default function Agendamento() {
             {errors.telefone && <p className="text-red-600 text-sm mt-1">{errors.telefone.message}</p>}
           </div>
 
+          {/* Endereço */}
           <div>
             <label className="block font-bold text-gray-900 mb-1" htmlFor="endereco">Endereço</label>
             <input id="endereco" type="text" placeholder="Ex: Rua das Flores, 123"
@@ -128,28 +170,47 @@ export default function Agendamento() {
             {errors.endereco && <p className="text-red-600 text-sm mt-1">{errors.endereco.message}</p>}
           </div>
 
+          {/* Data de nascimento */}
           <div>
-            <label className="block font-bold text-gray-900 mb-1" htmlFor="data">Data de nascimento</label>
-            <input id="data" type="date"
+            <label className="block font-bold text-gray-900 mb-1" htmlFor="dataNasc">Data de nascimento</label>
+            <input id="dataNasc" type="date"
               className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-200"
-              {...register("data", { required: "Informe sua data de nascimento." })}
+              {...register("dataNasc", { required: "Informe sua data de nascimento." })}
             />
-            {errors.data && <p className="text-red-600 text-sm mt-1">{errors.data.message}</p>}
+            {errors.dataNasc && <p className="text-red-600 text-sm mt-1">{errors.dataNasc.message}</p>}
           </div>
 
+          {/* Tratamento */}
           <div>
-            <label className="block font-bold text-gray-900 mb-1" htmlFor="programa">Programa</label>
-            <select id="programa"
+            <label className="block font-bold text-gray-900 mb-1" htmlFor="tratamentoSolicitado">Programa</label>
+            <select id="tratamentoSolicitado"
               className="w-full border border-gray-300 rounded-xl px-4 py-3 bg-white focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-200"
-              {...register("programa", { required: "Selecione um programa." })}
+              {...register("tratamentoSolicitado", { required: "Selecione um programa." })}
             >
               <option value="">Selecione...</option>
-              {programas.map((p) => <option key={p.value} value={p.value}>{p.label}</option>)}
+              {programas.map((p) => (
+                <option key={p.value} value={p.value}>{p.label}</option>
+              ))}
             </select>
-            {errors.programa && <p className="text-red-600 text-sm mt-1">{errors.programa.message}</p>}
+            {errors.tratamentoSolicitado && <p className="text-red-600 text-sm mt-1">{errors.tratamentoSolicitado.message}</p>}
           </div>
 
-          <button type="submit" disabled={isSubmitting}
+          {/* História — campo que faltava no formulário original */}
+          <div>
+            <label className="block font-bold text-gray-900 mb-1" htmlFor="historia">
+              Conte sua situação
+            </label>
+            <textarea id="historia" rows={4}
+              placeholder="Descreva o que está sentindo, há quanto tempo, e qualquer informação relevante sobre sua saúde bucal..."
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-200 resize-none"
+              {...register("historia", { required: "Descreva sua situação." })}
+            />
+            {errors.historia && <p className="text-red-600 text-sm mt-1">{errors.historia.message}</p>}
+          </div>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
             className="w-fit bg-green-400 text-gray-900 border-0 rounded-xl px-6 py-3 font-bold cursor-pointer hover:bg-green-500 transition-colors disabled:opacity-75"
           >
             {isSubmitting ? "Enviando..." : "Solicitar agendamento"}
