@@ -3,7 +3,9 @@ import useDocumentTitle from "../hooks/useDocumentTitle";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { AgendamentoFormData, Programa } from "../types";
+import type { Programa } from "../types";
+
+const API_URL = "https://projeto-java-sorriso-conectado-quarkus.onrender.com";
 
 const programas: { value: Programa; label: string }[] = [
   { value: "Dentista do Bem", label: "Dentista do Bem" },
@@ -14,20 +16,40 @@ export default function Agendamento() {
   useDocumentTitle("Agendamento");
   const navigate = useNavigate();
   const [enviado, setEnviado] = useState(false);
+  const [erro, setErro] = useState<string | null>(null);
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<AgendamentoFormData>();
+  } = useForm<Record<string, string>>();
 
-  const onSubmit = async (data: AgendamentoFormData) => {
-    // Aqui vai o POST para a API Java quando estiver pronta
-    console.log(data);
-    await new Promise((r) => setTimeout(r, 500));
-    setEnviado(true);
-    reset();
+  const onSubmit = async (data: Record<string, string>) => {
+    try {
+      setErro(null);
+      const res = await fetch(`${API_URL}/beneficiario`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nome: data.nome,
+          cpf: data.cpf.replace(/\D/g, ""),
+          telefone: data.telefone.replace(/\D/g, ""),
+          email: data.email,
+          endereco: data.endereco,
+          dataNasc: data.data,
+          tratamentoSolicitado: data.programa,
+          statusVulnerabilidade: "Novo",
+          historia: "",
+        }),
+      });
+
+      if (!res.ok) throw new Error("Erro ao enviar.");
+      setEnviado(true);
+      reset();
+    } catch {
+      setErro("Erro ao enviar agendamento. Tente novamente.");
+    }
   };
 
   if (enviado) {
@@ -41,7 +63,7 @@ export default function Agendamento() {
               Novo agendamento
             </button>
             <button onClick={() => navigate("/pacientes")} className="bg-gray-900 text-white px-5 py-2 rounded-xl font-bold border-0 cursor-pointer hover:bg-gray-700 transition-colors">
-              Ver pacientes
+              Ver beneficiários
             </button>
           </div>
         </section>
@@ -58,7 +80,9 @@ export default function Agendamento() {
 
       <section className="bg-white border border-yellow-200 rounded-2xl shadow p-6">
         <form className="grid gap-4 max-w-2xl" onSubmit={handleSubmit(onSubmit)} noValidate>
-          
+
+          {erro && <p className="text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3">{erro}</p>}
+
           <div>
             <label className="block font-bold text-gray-900 mb-1" htmlFor="nome">Nome completo</label>
             <input id="nome" type="text" placeholder="Ex: João da Silva"
@@ -66,6 +90,15 @@ export default function Agendamento() {
               {...register("nome", { required: "Informe seu nome.", minLength: { value: 3, message: "Mínimo 3 caracteres." } })}
             />
             {errors.nome && <p className="text-red-600 text-sm mt-1">{errors.nome.message}</p>}
+          </div>
+
+          <div>
+            <label className="block font-bold text-gray-900 mb-1" htmlFor="cpf">CPF</label>
+            <input id="cpf" type="text" placeholder="000.000.000-00"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-200"
+              {...register("cpf", { required: "Informe seu CPF.", minLength: { value: 11, message: "CPF inválido." } })}
+            />
+            {errors.cpf && <p className="text-red-600 text-sm mt-1">{errors.cpf.message}</p>}
           </div>
 
           <div>
@@ -87,12 +120,21 @@ export default function Agendamento() {
           </div>
 
           <div>
-            <label className="block font-bold text-gray-900 mb-1" htmlFor="idade">Idade</label>
-            <input id="idade" type="number" placeholder="Ex: 14" min={1} max={120}
+            <label className="block font-bold text-gray-900 mb-1" htmlFor="endereco">Endereço</label>
+            <input id="endereco" type="text" placeholder="Ex: Rua das Flores, 123"
               className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-200"
-              {...register("idade", { required: "Informe sua idade.", valueAsNumber: true, min: { value: 1, message: "Idade inválida." } })}
+              {...register("endereco", { required: "Informe seu endereço." })}
             />
-            {errors.idade && <p className="text-red-600 text-sm mt-1">{errors.idade.message}</p>}
+            {errors.endereco && <p className="text-red-600 text-sm mt-1">{errors.endereco.message}</p>}
+          </div>
+
+          <div>
+            <label className="block font-bold text-gray-900 mb-1" htmlFor="data">Data de nascimento</label>
+            <input id="data" type="date"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-200"
+              {...register("data", { required: "Informe sua data de nascimento." })}
+            />
+            {errors.data && <p className="text-red-600 text-sm mt-1">{errors.data.message}</p>}
           </div>
 
           <div>
@@ -105,15 +147,6 @@ export default function Agendamento() {
               {programas.map((p) => <option key={p.value} value={p.value}>{p.label}</option>)}
             </select>
             {errors.programa && <p className="text-red-600 text-sm mt-1">{errors.programa.message}</p>}
-          </div>
-
-          <div>
-            <label className="block font-bold text-gray-900 mb-1" htmlFor="data">Data preferida</label>
-            <input id="data" type="date" min={new Date().toISOString().split("T")[0]}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-200"
-              {...register("data", { required: "Selecione uma data." })}
-            />
-            {errors.data && <p className="text-red-600 text-sm mt-1">{errors.data.message}</p>}
           </div>
 
           <button type="submit" disabled={isSubmitting}

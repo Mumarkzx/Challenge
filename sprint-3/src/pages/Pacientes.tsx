@@ -1,84 +1,95 @@
 import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import useDocumentTitle from "../hooks/useDocumentTitle";
+import type { Paciente } from "../types";
 
-import type { Paciente, StatusPaciente } from "../types";
-
-const MOCK_PACIENTES: Paciente[] = [
-  { id: 1, nome: "Ana Souza", idade: 13, programa: "Dentista do Bem", cidade: "São Paulo", status: "Em atendimento" },
-  { id: 2, nome: "Carlos Lima", idade: 15, programa: "Dentista do Bem", cidade: "Campinas", status: "Concluído" },
-  { id: 3, nome: "Maria Oliveira", idade: 29, programa: "Apolônias do Bem", cidade: "Santos", status: "Aguardando" },
-  { id: 4, nome: "João Pedro", idade: 12, programa: "Dentista do Bem", cidade: "Guarulhos", status: "Em atendimento" },
-  { id: 5, nome: "Fernanda Costa", idade: 34, programa: "Apolônias do Bem", cidade: "São Paulo", status: "Concluído" },
-];
-
-const statusColor: Record<StatusPaciente, string> = {
-  "Em atendimento": "bg-green-100 text-green-800",
-  "Concluído": "bg-blue-100 text-blue-800",
-  "Aguardando": "bg-yellow-100 text-yellow-800",
-};
-
+const API_URL = "https://projeto-java-sorriso-conectado-quarkus.onrender.com";
 
 export default function Pacientes() {
   useDocumentTitle("Pacientes");
 
   const [pacientes, setPacientes] = useState<Paciente[]>([]);
   const [loading, setLoading] = useState(true);
+  const [erro, setErro] = useState<string | null>(null);
   const [busca, setBusca] = useState("");
 
-  useEffect(() => {
-    // Quando a API Java estiver pronta, troca o mock por:
-    // const res = await fetch("https://SUA_API/pacientes");
-    // const data = await res.json();
-    // setPacientes(data);
-    const carregar = async () => {
-      await new Promise((r) => setTimeout(r, 600));
-      setPacientes(MOCK_PACIENTES);
+useEffect(() => {
+  const carregar = async () => {
+    try {
+      setLoading(true);
+      setErro(null);
+      const res = await fetch(`${API_URL}/beneficiario`);
+      if (!res.ok) throw new Error("Erro ao carregar beneficiários.");
+      const data: Paciente[] = await res.json();
+      setPacientes(data);
+    } catch {
+      setErro("Não foi possível carregar os dados. Tente novamente.");
+    } finally {
       setLoading(false);
-    };
-    carregar();
-  }, []);
+    }
+  };
+  carregar();
+}, []);
 
   const filtrados = pacientes.filter((p) =>
     p.nome.toLowerCase().includes(busca.toLowerCase()) ||
-    p.cidade.toLowerCase().includes(busca.toLowerCase())
+    p.endereco.toLowerCase().includes(busca.toLowerCase())
   );
 
   return (
     <Layout>
       <section className="bg-white border border-yellow-200 rounded-2xl shadow p-6 mb-6">
-        <h2 className="text-3xl font-bold mb-2">Pacientes</h2>
-        <p className="text-gray-600">Lista de pacientes atendidos pelos programas da Turma do Bem.</p>
+        <h2 className="text-3xl font-bold mb-2">Beneficiários</h2>
+        <p className="text-gray-600">Lista de beneficiários atendidos pelos programas da Turma do Bem.</p>
+<button
+  onClick={() => window.location.reload()}
+  className="mt-3 bg-green-400 text-gray-900 border-0 rounded-xl px-4 py-2 font-bold cursor-pointer hover:bg-green-500 transition-colors text-sm"
+>
+  Atualizar lista
+</button>
       </section>
 
       <div className="mb-4">
         <input
           type="text"
-          placeholder="Buscar por nome ou cidade..."
+          placeholder="Buscar por nome ou endereço..."
           value={busca}
           onChange={(e) => setBusca(e.target.value)}
           className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-200"
         />
       </div>
 
-      {loading ? (
-        <p className="text-center text-gray-500 py-10">Carregando pacientes...</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {filtrados.map((paciente) => (
-            <article key={paciente.id} className="bg-white border border-yellow-200 rounded-2xl shadow p-5 flex flex-col gap-2">
-              <div className="flex items-center justify-between">
-                <h3 className="font-bold text-lg">{paciente.nome}</h3>
-                <span className={`text-xs font-semibold px-2 py-1 rounded-full ${statusColor[paciente.status]}`}>
-                  {paciente.status}
-                </span>
-              </div>
-              <p className="text-sm text-gray-600"><span className="font-semibold">Idade:</span> {paciente.idade} anos</p>
-              <p className="text-sm text-gray-600"><span className="font-semibold">Programa:</span> {paciente.programa}</p>
-              <p className="text-sm text-gray-600"><span className="font-semibold">Cidade:</span> {paciente.cidade}</p>
-            </article>
-          ))}
+      {loading && (
+        <p className="text-center text-gray-500 py-10">Carregando beneficiários...</p>
+      )}
+
+      {erro && !loading && (
+        <div className="bg-red-50 border border-red-200 rounded-2xl p-6 text-center">
+          <p className="text-red-600 font-bold mb-3">{erro}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="bg-red-500 text-white px-4 py-2 rounded-xl font-semibold border-0 cursor-pointer hover:bg-red-600 transition-colors"
+          >
+            Tentar novamente
+          </button>
         </div>
+      )}
+
+      {!loading && !erro && (
+        <>
+          <p className="text-sm text-gray-500 mb-3">{filtrados.length} beneficiário(s) encontrado(s)</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {filtrados.map((paciente) => (
+              <article key={paciente.idBeneficiario} className="bg-white border border-yellow-200 rounded-2xl shadow p-5 flex flex-col gap-2">
+                <h3 className="font-bold text-lg">{paciente.nome}</h3>
+                <p className="text-sm text-gray-600"><span className="font-semibold">Tratamento:</span> {paciente.tratamentoSolicitado}</p>
+                <p className="text-sm text-gray-600"><span className="font-semibold">Status:</span> {paciente.statusVulnerabilidade}</p>
+                <p className="text-sm text-gray-600"><span className="font-semibold">Endereço:</span> {paciente.endereco}</p>
+                <p className="text-sm text-gray-600"><span className="font-semibold">Nascimento:</span> {new Date(paciente.dataNasc).toLocaleDateString("pt-BR")}</p>
+              </article>
+            ))}
+          </div>
+        </>
       )}
     </Layout>
   );

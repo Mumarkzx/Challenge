@@ -17,19 +17,24 @@ export type Programa = "Dentista do Bem" | "Apolônias do Bem";
 
 
 export type Paciente = {
-  id: number;
+  idBeneficiario: number;
   nome: string;
-  idade: number;
-  programa: Programa;
-  cidade: string;
-  status: StatusPaciente;
+  cpf: string;
+  telefone: string;
+  email: string;
+  endereco: string;
+  dataNasc: string;
+  tratamentoSolicitado: string;
+  statusVulnerabilidade: string;
+  historia: string;
 };
-
 
 type DadosPessoais = {
   nome: string;
+  cpf: string;
   email: string;
   telefone: string;
+  endereco: string;
 };
 
 type DadosAgendamento = {
