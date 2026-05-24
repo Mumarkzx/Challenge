@@ -29,8 +29,7 @@ export default function Agendamento() {
     try {
       setErro(null);
 
-      // O Quarkus deserializa LocalDate a partir de "YYYY-MM-DD"
-      // que é exatamente o formato que o input type="date" já envia — sem converter.
+
       const res = await fetch(`${API_URL}/beneficiario`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -41,9 +40,9 @@ export default function Agendamento() {
           telefone:              data.telefone.replace(/\D/g, ""),
           email:                 data.email,
           endereco:              data.endereco,
-          dataNasc:              data.dataNasc,           // "YYYY-MM-DD" → LocalDate ✓
+          dataNasc:              data.dataNasc,           
           tratamentoSolicitado:  data.tratamentoSolicitado,
-          statusVulnerabilidade: "Novo",                  // definido automaticamente
+          statusVulnerabilidade: "Novo",                  
           historia:              data.historia,
         }),
       });
