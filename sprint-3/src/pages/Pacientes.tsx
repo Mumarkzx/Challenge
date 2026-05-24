@@ -2,14 +2,7 @@ import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 
-type Paciente = {
-  id: number;
-  nome: string;
-  idade: number;
-  programa: string;
-  cidade: string;
-  status: "Em atendimento" | "Concluído" | "Aguardando";
-};
+import type { Paciente, StatusPaciente } from "../types";
 
 const MOCK_PACIENTES: Paciente[] = [
   { id: 1, nome: "Ana Souza", idade: 13, programa: "Dentista do Bem", cidade: "São Paulo", status: "Em atendimento" },
@@ -19,11 +12,12 @@ const MOCK_PACIENTES: Paciente[] = [
   { id: 5, nome: "Fernanda Costa", idade: 34, programa: "Apolônias do Bem", cidade: "São Paulo", status: "Concluído" },
 ];
 
-const statusColor: Record<Paciente["status"], string> = {
+const statusColor: Record<StatusPaciente, string> = {
   "Em atendimento": "bg-green-100 text-green-800",
   "Concluído": "bg-blue-100 text-blue-800",
   "Aguardando": "bg-yellow-100 text-yellow-800",
 };
+
 
 export default function Pacientes() {
   useDocumentTitle("Pacientes");

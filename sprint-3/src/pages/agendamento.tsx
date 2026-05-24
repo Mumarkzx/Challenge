@@ -3,19 +3,11 @@ import useDocumentTitle from "../hooks/useDocumentTitle";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import type { AgendamentoFormData, Programa } from "../types";
 
-type AgendamentoFormData = {
-  nome: string;
-  email: string;
-  telefone: string;
-  idade: number;
-  programa: string;
-  data: string;
-};
-
-const programas = [
-  { value: "dentista-do-bem", label: "Dentista do Bem" },
-  { value: "apolonias-do-bem", label: "Apolônias do Bem" },
+const programas: { value: Programa; label: string }[] = [
+  { value: "Dentista do Bem", label: "Dentista do Bem" },
+  { value: "Apolônias do Bem", label: "Apolônias do Bem" },
 ];
 
 export default function Agendamento() {
